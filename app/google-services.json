@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "82011399847",
+    "firebase_url": "https://care-and-share-final-db.firebaseio.com",
+    "project_id": "care-and-share-final-db",
+    "storage_bucket": "care-and-share-final-db.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:82011399847:android:3d4db4df7d18dd6265dd82",
+        "android_client_info": {
+          "package_name": "com.example.careandshare"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "82011399847-1ci3egjfl6pfd909ltrbgv6gus91donr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlFkNMLRSHr6IZ0C8FPUh-xWZce3yrRGc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "82011399847-1ci3egjfl6pfd909ltrbgv6gus91donr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
