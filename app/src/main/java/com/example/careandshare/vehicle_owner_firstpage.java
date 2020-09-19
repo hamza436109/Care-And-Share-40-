@@ -123,9 +123,9 @@ public class vehicle_owner_firstpage extends FragmentActivity implements OnMapRe
         LatLng Latlng = new LatLng(location.getLatitude(), location.getLongitude());
         mMap.moveCamera(CameraUpdateFactory.newLatLng(Latlng));
         mMap.animateCamera(CameraUpdateFactory.zoomTo(11));
-
-     /*   String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Drivers Available");
+/*
+        String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("DriversAvailable");
         GeoFire geoFire = new GeoFire(ref);
         geoFire.setLocation(userID, new GeoLocation(location.getLatitude(), location.getLongitude()));*/
 
@@ -189,7 +189,16 @@ public class vehicle_owner_firstpage extends FragmentActivity implements OnMapRe
     protected void onStop() {
         super.onStop();
 
-  /* String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+     /*   LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, this);
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("driversAvailable");
+
+        GeoFire geoFire = new GeoFire(ref);
+        geoFire.removeLocation(userId);
+
+
+
+   String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Drivers Available");
         GeoFire geoFire = new GeoFire(ref);
         geoFire.removeLocation(userID);
