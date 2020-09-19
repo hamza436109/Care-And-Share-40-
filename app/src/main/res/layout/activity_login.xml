@@ -11,7 +11,6 @@
         android:id="@+id/topview"
         android:layout_width="0dp"
         android:layout_height="150dp"
-        android:layout_marginTop="4dp"
         android:background="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -66,7 +65,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:ignore="RtlCompat" />
 
     <EditText
         android:id="@+id/password"
@@ -85,13 +85,14 @@
         android:hint="Password"
         android:inputType="textPassword"
         android:padding="16dp"
-        android:textColor="#FFFFFF"
+        android:textColor="#8C1313"
         android:textColorHint="#636161"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Email" />
+        app:layout_constraintTop_toBottomOf="@+id/Email"
+        tools:ignore="RtlCompat" />
 
     <Button
 

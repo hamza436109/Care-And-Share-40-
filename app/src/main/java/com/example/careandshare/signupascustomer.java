@@ -54,7 +54,12 @@ public class signupascustomer extends AppCompatActivity {
         fAuth= FirebaseAuth.getInstance();
         fstore= FirebaseFirestore.getInstance();
 
-
+mLoginBtn.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        startActivity(new Intent(signupascustomer.this,Login.class));
+    }
+});
 
         mRegisterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,7 +110,7 @@ public class signupascustomer extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             Toast.makeText(signupascustomer.this, "User Created Successfully", Toast.LENGTH_SHORT).show();
-                            userID = fAuth.getCurrentUser().getUid();
+                           userID = fAuth.getCurrentUser().getUid();
                             DocumentReference documentReference = fstore.collection("users").document(userID);
                             Map<String,Object> user = new HashMap<>();
                             user.put("Full Name",fullname);

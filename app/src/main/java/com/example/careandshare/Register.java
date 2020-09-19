@@ -45,8 +45,8 @@ ProgressBar progressBar;
 
 
 
-           if(fAuth.getCurrentUser()!=null){
-                startActivity (new Intent(getApplicationContext(),MainActivity.class));
+        if(fAuth.getCurrentUser()!=null){
+             //   startActivity (new Intent(getApplicationContext(),MainActivity.class));
 
             }
           mLoginBtn.setOnClickListener(new View.OnClickListener() {

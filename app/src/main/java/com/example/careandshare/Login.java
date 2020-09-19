@@ -3,6 +3,7 @@ package com.example.careandshare;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -18,6 +19,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import javax.security.auth.login.LoginException;
 
 public class Login extends AppCompatActivity {
 
@@ -25,7 +29,8 @@ public class Login extends AppCompatActivity {
     Button mLoginBtn;
     TextView mCreateBtn;
     ProgressBar progressBar;
-    FirebaseAuth fAuth;
+    FirebaseAuth mAuth;
+    private ProgressDialog loadingbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,82 +38,90 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
 
-         mEmail = findViewById(R.id.Email);
-         mPassword = findViewById(R.id.password);
-         mLoginBtn = findViewById(R.id.loginBtn);
-         mCreateBtn =findViewById(R.id.createText);
-         fAuth  = FirebaseAuth.getInstance();
+        mEmail = findViewById(R.id.Email);
+        mPassword = findViewById(R.id.password);
+        mLoginBtn = findViewById(R.id.loginBtn);
+        mCreateBtn = findViewById(R.id.createText);
+        mAuth = FirebaseAuth.getInstance();
+        loadingbar  = new ProgressDialog(this);
 
-        mCreateBtn.setOnClickListener(new View.OnClickListener() {
+
+
+
+        mLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-           public void onClick(View view) {
-                startActivity (new Intent(Login.this,Register.class));
+            public void onClick(View view) {
+                loadingbar.setTitle("Login");
+                loadingbar.setMessage("Please Wait, while Login is completed...");
+
+               String email = mEmail.getText().toString();
+                String password = mPassword.getText().toString();
+                if (TextUtils.isEmpty(email)) {
+                    mEmail.setError("Please enter your email address ");
+
+
+                }
+
+                if (TextUtils.isEmpty(password)) {
+                    mPassword.setError("Enter your password");
+
+
+                }
+
+                if (password.length() < 6) {
+
+
+                    mPassword.setError("Password must be more than six characters");
+
+
+                    return;
+
+                }
+                loadingbar.show();
+                mAuth.signInWithEmailAndPassword(email, password)
+                        .addOnCompleteListener( new OnCompleteListener<AuthResult>() {
+
+
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(Login.this, "Authentication passed ",
+                                            Toast.LENGTH_SHORT).show();
+                                    startActivity (new Intent(Login.this,vehicle_owner_firstpage.class));
+                                            loadingbar.dismiss();
+                                  /*  FirebaseUser user = mAuth.getCurrentUser();
+                                    updateUI(user);*/
+                                } else {
+                                    Toast.makeText(Login.this, "Authentication failed.",
+                                            Toast.LENGTH_SHORT).show();
+                                            loadingbar.dismiss();
+                                    // ...
+                                }
+
+                                // ...
+                            }
+                        });
+
+
+
+
+
+
+
+
             }
         });
 
 
 
 
-
-         mLoginBtn.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View view) {
-                 String email = mEmail.getText().toString().trim();
-                 String Password = mPassword.getText().toString().trim();
-
-
-
-                 if (TextUtils.isEmpty(email)){
-                     mEmail.setError("Please enter your email address ");
-
-                     return;
-
-
-                 }
-
-                 if (TextUtils.isEmpty(Password)){
-                     mPassword.setError("Enter your password");
-                     return;
-
-                 }
-
-                 if(Password.length()<6){
-
-
-                     mPassword.setError("Password must be more than six characters");
-
-
-                               return;
-
-                 }
-                 progressBar.setVisibility(View.VISIBLE);
-
-                 //Authenticate the user
-                 fAuth.signInWithEmailAndPassword(email,Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                     @Override
-                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            Toast.makeText(Login.this, "logged  In Successfully", Toast.LENGTH_SHORT).show();
-                            startActivity (new Intent(Login.this,vehicle_owner_firstpage.class));
-                            Log.e("success","successfullly registeredddddddd");
-                         }
-
-                        else{
-                            Toast.makeText(Login.this, "Error!"+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                            startActivity (new Intent(Login.this,vehicle_owner_firstpage.class));
-                            Log.e("success","not registerd ropererrr");
-                        }
-                     }
-                 });
-
-
-
-
-
-
-             }
-         });
-
+        mCreateBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Login.this, selectusertype.class));
+            }
+        });
+        }
 
 
 
@@ -122,4 +135,3 @@ public class Login extends AppCompatActivity {
 
 
     }
-}

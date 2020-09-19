@@ -3,6 +3,7 @@ package com.example.careandshare;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -31,6 +32,7 @@ public class signupasroomowner extends AppCompatActivity {
     FirebaseAuth fAuth;
     FirebaseFirestore fstore;
     String userID;
+    private ProgressDialog loadingbar;
 
 
 
@@ -52,7 +54,18 @@ public class signupasroomowner extends AppCompatActivity {
         mRegisterBtn = findViewById(R.id.button2);
         mLoginBtn = findViewById(R.id.logintextfromroomowner);
         fAuth= FirebaseAuth.getInstance();
+        loadingbar  = new ProgressDialog(this);
         fstore= FirebaseFirestore.getInstance();
+
+
+
+
+        mLoginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(signupasroomowner.this,Login.class));
+            }
+        });
 
 
 
@@ -101,7 +114,9 @@ public class signupasroomowner extends AppCompatActivity {
 
                 }
 
-
+loadingbar.setTitle("Room Owner Registration");
+                loadingbar.setMessage("Please Wait, while registration is completed...");
+                loadingbar.show();
 
                 fAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
@@ -118,6 +133,7 @@ public class signupasroomowner extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(Void aVoid) {
                                     Log.d("TAG","on success: user profile is created for "+userID);
+                                    loadingbar.dismiss();;
                                 }
                             });
 
@@ -129,7 +145,7 @@ public class signupasroomowner extends AppCompatActivity {
 
                         else{
                             Toast.makeText(signupasroomowner.this, "Error!"+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-
+                            loadingbar.dismiss();;
                         }
                     }
                 });

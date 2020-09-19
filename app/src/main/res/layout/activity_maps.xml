@@ -13,34 +13,38 @@
 
 
 
-
+<!--
     <fragment
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
 
-        tools:context=".Customer_Firstpage" />
+        tools:context=".Customer_Firstpage" />-->
 
+
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:map="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="example.com.mapexample.MapsActivity" />
 
 
     <androidx.appcompat.widget.Toolbar
-android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/toolBar"
-        app:title="Navigation"
-        app:titleTextColor="@color/cardview_light_background"
-        android:background="@color/colorPrimaryDark"
-
-
-        />
-
-    <ImageView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        app:srcCompat="@drawable/ic_pin"
-/>
+        android:background="@color/colorPrimaryDark"
+        android:visibility="invisible"
+        app:title="Navigation"
+
+
+        app:titleTextColor="@color/cardview_light_background" />
+
+
 
     <com.mancj.materialsearchbar.MaterialSearchBar
         android:id="@+id/searchBar"
@@ -49,7 +53,7 @@ android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="65dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
@@ -76,7 +80,7 @@ android:layout_width="match_parent"
         android:layout_marginBottom="16dp"
         android:elevation="5dp"
         android:outlineProvider="bounds"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:mt_hint="Search Rides"
         app:mt_maxSuggestionsCount="10"
         app:mt_navIconEnabled="true"
@@ -133,7 +137,8 @@ android:layout_width="match_parent"
 
 
         android:text="Rooms"
-        android:textColor="#ffffff" />
+        android:textColor="#ffffff"
+        android:visibility="visible" />
 
 
     <Button
@@ -148,9 +153,15 @@ android:layout_width="match_parent"
 
 
         android:text="Rides"
-        android:textColor="#ffffff" />
+        android:textColor="#ffffff"
+        android:visibility="visible" />
 
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        app:srcCompat="@drawable/ic_pin" />
 
 </RelativeLayout>
 
@@ -167,5 +178,7 @@ android:layout_width="match_parent"
 />
 
 -->
+
+
 
 </androidx.drawerlayout.widget.DrawerLayout>
