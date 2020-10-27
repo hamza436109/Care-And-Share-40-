@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single"
+        android:id="@+id/group1">
+        <item android:id="@+id/nav_profile"
+            android:icon="@drawable/ic_baseline_home_24"
+            android:title="Profile">
+        </item>
+        <item android:id="@+id/nav_myrooms"
+            android:icon="@drawable/ic_baseline_home_24"
+            android:title="My Rooms"
+            android:visible="true">
+        </item>
+
+        <item android:id="@+id/nav_wallet"
+            android:icon="@drawable/ic_wallet"
+            android:iconTint="@color/colorPrimary"
+            android:title="Wallet"
+            >
+        </item>
+        <item android:id="@+id/settings_drawer"
+            android:icon="@drawable/ic_baseline_settings_24"
+
+            android:title="Settings">
+        </item>
+        <item android:id="@+id/nav_mybookings"
+            android:icon="@drawable/ic_baseline_smartphone_24"
+            android:title="My Bookings">
+        </item>
+        </group>
+
+
+    <group android:checkableBehavior="single"
+        android:id="@+id/group2">
+        <item android:id="@+id/nav_Policy"
+            android:icon="@drawable/ic_baseline_policy_24"
+            android:title="Privacy Policy">
+        </item>
+        <item android:id="@+id/nav_share"
+        android:icon="@drawable/ic_baseline_share_24"
+        android:title="Share">
+        </item>
+
+        <item android:id="@+id/nav_Logout"
+            android:icon="@drawable/ic_logout"
+            android:title="Logout">
+        </item>
+    </group>
+
+</menu>

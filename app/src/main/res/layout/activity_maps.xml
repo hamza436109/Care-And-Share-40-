@@ -6,21 +6,51 @@
     android:layout_height="match_parent"
     android:id="@+id/drawer"
     tools:openDrawer="start"
-    tools:context=".Customer_Firstpage">
-<RelativeLayout
+    tools:context=".Customer_Firstpage"
+    >
+
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:background="#F7FFFFFF"
+        android:layout_height="wrap_content"
+        >
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#F7FFFFFF"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimaryDark"
+                app:subtitleTextColor="#0A0A0A"
+                app:titleTextColor="#111111" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Hello world"/>
+            Your code here
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
+
+
+
+    <RelativeLayout
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
-
-
-<!--
-    <fragment
-        android:id="@+id/map"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-
-        tools:context=".Customer_Firstpage" />-->
 
 
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
@@ -31,6 +61,103 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context="example.com.mapexample.MapsActivity" />
+
+    <RelativeLayout
+        android:id="@+id/rell"
+        android:background="@color/colorPrimaryDark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/ridebtn"
+        android:layout_margin="10dp"
+        android:visibility="gone">
+
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image_driver"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:src="@drawable/ic_baseline_person_24"
+        app:civ_border_color="@color/transparentBlack"
+        app:civ_border_width="2dp"
+        android:layout_below="@+id/app_bar_settings"
+        android:layout_marginTop="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_margin="10dp"
+        android:padding="3dp"
+        tools:ignore="VectorDrawableCompat"
+        android:layout_alignParentLeft="true" />
+
+
+
+        <TextView
+            android:id="@+id/name_driver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/profile_image_driver"
+            android:text="Driver Name"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:textSize="16dp"
+            android:layout_marginTop="16dp"
+            />
+
+
+        <TextView
+            android:id="@+id/phone_driver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/profile_image_driver"
+            android:text="Driver Phone Number"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:textSize="16dp"
+            android:layout_marginTop="3dp"
+            android:layout_below="@+id/name_driver"
+            />
+
+
+        <TextView
+            android:id="@+id/car_name_driver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/profile_image_driver"
+            android:text="Car name"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:textSize="16dp"
+            android:layout_marginTop="3dp"
+            android:layout_below="@+id/phone_driver"
+            />
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:srcCompat="@drawable/ic_baseline_call_24"
+            android:tint="@color/white"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="15dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true" />
+
+
+
+
+
+    </RelativeLayout>
+
+
+
+    <SearchView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/sv_location"
+        android:queryHint="Search..."
+        android:iconifiedByDefault="false"
+        android:layout_margin="10dp"
+        android:elevation="5dp"
+        android:background="@drawable/bg_round_search"
+        />
 
 
     <androidx.appcompat.widget.Toolbar
@@ -125,7 +252,7 @@
         android:visibility="visible" />
 
 
-    <Button
+ <Button
         android:id="@+id/roombtn"
         android:layout_width="143dp"
         android:layout_height="wrap_content"
@@ -136,9 +263,9 @@
         android:background="@drawable/round_bg"
 
 
-        android:text="Rooms"
+        android:text="Settings"
         android:textColor="#ffffff"
-        android:visibility="visible" />
+        android:visibility="invisible" />
 
 
     <Button
@@ -154,7 +281,25 @@
 
         android:text="Rides"
         android:textColor="#ffffff"
-        android:visibility="visible" />
+        android:visibility="invisible" />
+
+
+    <Button
+        android:id="@+id/logoutcustomer"
+        android:layout_width="143dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginLeft="200dp"
+        android:layout_marginTop="85dp"
+        android:layout_marginBottom="25dp"
+        android:background="@drawable/round_bg"
+
+
+        android:text="Logout"
+        android:textColor="#ffffff"
+        android:visibility="invisible" />
+
+
 
 
     <ImageView
@@ -164,7 +309,6 @@
         app:srcCompat="@drawable/ic_pin" />
 
 </RelativeLayout>
-
 <!--
     <com.google.android.material.navigation.NavigationView
         android:layout_width="wrap_content"
@@ -178,7 +322,17 @@
 />
 
 -->
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation_menu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/header"
+        app:menu="@menu/drawer_menu"
+        >
+    </com.google.android.material.navigation.NavigationView>
 
 
 
-</androidx.drawerlayout.widget.DrawerLayout>
+
+></androidx.drawerlayout.widget.DrawerLayout>

@@ -15,11 +15,22 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.denzcoskun.imageslider.constants.ScaleTypes;
+import com.denzcoskun.imageslider.interfaces.ItemClickListener;
+import com.denzcoskun.imageslider.models.SlideModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.security.auth.login.LoginException;
 
@@ -31,12 +42,16 @@ public class Login extends AppCompatActivity {
     ProgressBar progressBar;
     FirebaseAuth mAuth;
     private ProgressDialog loadingbar;
+    DatabaseReference dbcustomer,dbdriver;
+    String[] newArray;
+    String usercategory="none";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        newArray = new String[500];
 
         mEmail = findViewById(R.id.Email);
         mPassword = findViewById(R.id.password);
@@ -44,6 +59,36 @@ public class Login extends AppCompatActivity {
         mCreateBtn = findViewById(R.id.createText);
         mAuth = FirebaseAuth.getInstance();
         loadingbar  = new ProgressDialog(this);
+       dbcustomer =FirebaseDatabase.getInstance().getReference().child("Users").child("Customers");
+       dbdriver=FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers");
+
+                /*   roomowners();
+Driversusercheck();*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -84,13 +129,17 @@ public class Login extends AppCompatActivity {
 
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
+
+
+
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(Login.this, "Authentication passed ",
-                                            Toast.LENGTH_SHORT).show();
-                                    startActivity (new Intent(Login.this,vehicle_owner_firstpage.class));
-                                            loadingbar.dismiss();
-                                  /*  FirebaseUser user = mAuth.getCurrentUser();
-                                    updateUI(user);*/
+
+                                   Driversusercheck();
+                                    roomowners();
+                                    customercheck();
+
+                                    loadingbar.dismiss();
+
                                 } else {
                                     Toast.makeText(Login.this, "Authentication failed.",
                                             Toast.LENGTH_SHORT).show();
@@ -123,10 +172,93 @@ public class Login extends AppCompatActivity {
         });
         }
 
+    void Driversusercheck() {
+
+
+        FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers")
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+                    {
+
+
+                        int cout=0;
+                        for (DataSnapshot data : dataSnapshot.getChildren()){
+                            // String a  = data.child("uid").getValue().toString();
+
+
+
+                            newArray[++cout] = data.getKey();
+
+
+                        }
+                        String ab = newArray[1];
+
+
+                        for (int i=1;i<=cout;i++){
+                            if (newArray[i].equals(mAuth.getCurrentUser().getUid())){
+                                //   Toast.makeText(Login.this,newArray[i], Toast.LENGTH_SHORT).show();
+
+                                usercategory="Drivers";
+                                Toast.makeText(Login.this, "Drivers category", Toast.LENGTH_SHORT).show();
+                                startActivity (new Intent(Login.this,vehicle_owner_firstpage.class));
+
+                            }
+
+                        }
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
 
 
 
 
+    }
+
+    private void roomowners() {
+
+
+        FirebaseDatabase.getInstance().getReference().child("Users").child("Room Owners")
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+                    {
+
+
+                        int cout=0;
+                        for (DataSnapshot data : dataSnapshot.getChildren()){
+                            // String a  = data.child("uid").getValue().toString();
+
+
+
+                            newArray[++cout] = data.getKey();
+
+
+                        }
+                        for (int i=1;i<=cout;i++){
+                            if (newArray[i].equals(mAuth.getCurrentUser().getUid())){
+                                //   Toast.makeText(Login.this,newArray[i], Toast.LENGTH_SHORT).show();
+
+                                usercategory="Room Owners";
+                                Toast.makeText(Login.this, "Room owners category", Toast.LENGTH_SHORT).show();
+                                startActivity (new Intent(Login.this,Room_owner_firstpage.class));
+
+                            }
+
+                        }
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
 
 
 
@@ -135,3 +267,52 @@ public class Login extends AppCompatActivity {
 
 
     }
+
+
+    private void customercheck(){
+
+
+        FirebaseDatabase.getInstance().getReference().child("Users").child("Customers")
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+                    {
+
+
+                        int cout=0;
+                        for (DataSnapshot data : dataSnapshot.getChildren()){
+                            // String a  = data.child("uid").getValue().toString();
+
+
+
+                            newArray[++cout] = data.getKey();
+
+
+                        }
+                        for (int i=1;i<=cout;i++){
+                            if (newArray[i].equals(mAuth.getCurrentUser().getUid())){
+                                //   Toast.makeText(Login.this,newArray[i], Toast.LENGTH_SHORT).show();
+
+                                usercategory="Customers";
+                                Toast.makeText(Login.this, String.valueOf(cout), Toast.LENGTH_SHORT).show();
+                             startActivity (new Intent(Login.this,Customer_Firstpage
+                                    .class));
+
+                            }
+
+                        }
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
+
+
+    }
+
+
+}

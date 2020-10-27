@@ -68,6 +68,7 @@
       android:layout_marginStart="2dp"
       android:layout_marginLeft="2dp"
       android:layout_marginTop="7dp"
+      android:autoText="false"
       android:background="@drawable/round_border"
       android:drawableLeft="@drawable/ic_baseline_person_24"
       android:drawableTint="@color/colorPrimary"
@@ -75,6 +76,7 @@
       android:hint="Name"
       android:inputType="textPersonName"
       android:padding="16dp"
+      android:text="hamza ashad"
       android:textSize="14sp"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/view3" />
@@ -92,6 +94,7 @@
       android:hint="Email addresss"
       android:inputType="textPersonName"
       android:padding="16dp"
+      android:text="@gmail.com"
       android:textSize="14sp"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/view3" />
@@ -109,6 +112,7 @@
       android:hint="Password"
       android:inputType="textPassword"
       android:padding="16dp"
+      android:text="shahg4u12"
       android:textSize="14sp"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
@@ -128,6 +132,7 @@
       android:hint="Confirm Password"
       android:inputType="textPassword"
       android:padding="16dp"
+      android:text="shahg4u12"
       android:textSize="14sp"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
@@ -147,6 +152,7 @@
       android:hint="Mobile Number"
       android:inputType="phone"
       android:padding="16dp"
+      android:text="0334515446"
       android:textSize="14sp"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />

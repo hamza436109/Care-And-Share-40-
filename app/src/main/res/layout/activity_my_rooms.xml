@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MyRooms">
+
+
+
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar_settings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_settings"
+            android:layout_height="45dp"
+            android:layout_width="wrap_content"
+            android:background="@color/colorPrimary">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/closebtn"
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                app:srcCompat="@drawable/ic_close_black_48dp"
+                android:tint="@color/white">
+
+            </ImageView>
+
+
+
+            <ImageView
+                android:id="@+id/savebtn"
+                android:layout_width="40dp"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/ic_baseline_save_24"
+                android:tint="@color/white"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="15dp">
+
+            </ImageView>
+
+        </RelativeLayout>
+        </androidx.appcompat.widget.Toolbar>
+        </com.google.android.material.appbar.AppBarLayout>
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:text="My Rooms"
+    android:textSize="45dp"
+   android:layout_marginTop="55dp"
+    android:layout_gravity="center_horizontal"
+    android:textColor="@color/transparentBlack"
+    android:textStyle="bold"
+    android:fontFamily="@font/aclonica">
+
+
+</TextView>
+
+        <com.denzcoskun.imageslider.ImageSlider
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:id="@+id/image_slider"
+            app:iss_corner_radius="30"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+          />
+
+
+        <androidx.cardview.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_view1"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            app:cardCornerRadius="10dp"
+
+            >
+
+            <TextView
+                android:id="@+id/roomtypeonnmyrooms1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="30dp"
+
+                android:layout_marginTop="20dp"
+                android:text="Room Type"
+                android:textSize="20dp"
+                >
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/cityonmyrooms1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="45dp"
+                android:text="City"
+                android:textSize="20dp"
+                >
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/roomdesconmyrooms1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="65dp"
+
+                android:text="Room Description... "
+                android:textSize="20dp"
+                >
+
+            </TextView>
+
+
+            <TextView
+                android:id="@+id/priceonmyrooms1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="85dp"
+                android:text="Price  "
+                android:textSize="20dp"
+                >
+
+
+            </TextView>
+
+
+
+
+        </androidx.cardview.widget.CardView>
+
+        <com.denzcoskun.imageslider.ImageSlider
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:id="@+id/image_slider2"
+            app:iss_corner_radius="30"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            />
+        <androidx.cardview.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_view2"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            card_view:cardCornerRadius="4dp">
+
+
+
+
+            <TextView
+                android:id="@+id/roomtypeonnmyrooms2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:text="Room Type"
+                android:textSize="20dp">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/cityonmyrooms2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="45dp"
+                android:text="City"
+                android:textSize="20dp">
+
+            </TextView>
+
+
+            <TextView
+                android:id="@+id/roomdesconmyrooms2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="65dp"
+                android:text="Room Description... "
+                android:textSize="20dp">
+
+            </TextView>
+
+
+            <TextView
+                android:id="@+id/priceonmyrooms2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="85dp"
+                android:text="Price  "
+                android:textSize="20dp">
+
+
+            </TextView>
+
+
+
+
+
+
+        </androidx.cardview.widget.CardView>
+
+
+
+
+
+
+        <com.denzcoskun.imageslider.ImageSlider
+            android:id="@+id/image_slider3"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            app:iss_corner_radius="30"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            />
+
+
+        <androidx.cardview.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_view3"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            card_view:cardCornerRadius="4dp">
+
+            <TextView
+                android:id="@+id/roomtypeonnmyrooms3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="30dp"
+                android:textSize="20dp"
+                android:text="Room Type">
+
+            </TextView>
+            <TextView
+                android:id="@+id/cityonmyrooms3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="45dp"
+                android:text="City"
+                android:textSize="20dp">
+
+            </TextView>
+
+
+
+            <TextView
+                android:id="@+id/roomdesconmyrooms3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="65dp"
+                android:layout_marginLeft="30dp"
+                android:textSize="20dp"
+                android:text="Room Description... ">
+
+            </TextView>
+
+
+            <TextView
+                android:id="@+id/priceonmyrooms3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="85dp"
+                android:layout_marginLeft="30dp"
+                android:textSize="20dp"
+                android:text="Price  ">
+
+
+            </TextView>
+
+
+
+        </androidx.cardview.widget.CardView>
+
+
+        <com.denzcoskun.imageslider.ImageSlider
+            android:id="@+id/image_slider4"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            app:iss_corner_radius="30"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            />
+
+        <androidx.cardview.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_view4"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            card_view:cardCornerRadius="4dp">
+
+
+
+
+            <TextView
+                android:id="@+id/roomtypeonnmyrooms4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="30dp"
+                android:textSize="20dp"
+                android:text="Room Type">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/cityonmyrooms4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="45dp"
+                android:text="City"
+                android:textSize="20dp">
+
+            </TextView>
+
+
+            <TextView
+                android:id="@+id/roomdesconmyrooms4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="65dp"
+                android:layout_marginLeft="30dp"
+                android:textSize="20dp"
+                android:text="Room Description... ">
+
+            </TextView>
+
+
+            <TextView
+                android:id="@+id/priceonmyrooms4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="85dp"
+                android:layout_marginLeft="30dp"
+                android:textSize="20dp"
+                android:text="Price">
+
+
+            </TextView>
+
+
+        </androidx.cardview.widget.CardView>
+
+
+
+
+
+        <com.denzcoskun.imageslider.ImageSlider
+            android:id="@+id/image_slider5"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            app:iss_corner_radius="30"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            />
+
+
+        <androidx.cardview.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_view5"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            card_view:cardCornerRadius="4dp">
+
+
+            <TextView
+                android:id="@+id/roomtypeonnmyrooms5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="30dp"
+                android:textSize="20dp"
+                android:text="Room Type">
+
+            </TextView>
+
+
+            <TextView
+                android:id="@+id/cityonmyrooms5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="45dp"
+                android:text="City"
+                android:textSize="20dp">
+
+
+                <!--  for (DataSnapshot data : dataSnapshot.getChildren()) {
+                  remoteimages.add(new SlideModel(data.child("Link").getValue().toString(),
+                  "Picture: " + count, ScaleTypes.FIT));
+                  count++;
+                  }
+
+                  mainslider.setImageList(remoteimages, ScaleTypes.FIT);-->
+
+            </TextView>
+            <TextView
+                android:id="@+id/roomdesconmyroom5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="65dp"
+                android:layout_marginLeft="30dp"
+                android:textSize="20dp"
+                android:text="Room Description... ">
+
+            </TextView>
+
+
+            <TextView
+                android:id="@+id/priceonmyrooms5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="85dp"
+                android:layout_marginLeft="30dp"
+                android:textSize="20dp"
+                android:text="Price  ">
+
+
+            </TextView>
+
+
+
+
+        </androidx.cardview.widget.CardView>
+
+
+
+
+    </LinearLayout>
+
+</ScrollView>

@@ -19,6 +19,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -33,6 +35,8 @@ public class signupasroomowner extends AppCompatActivity {
     FirebaseFirestore fstore;
     String userID;
     private ProgressDialog loadingbar;
+    private String onlinecustomerID;
+    private DatabaseReference roomownerdbref,databaseReference;
 
 
 
@@ -56,6 +60,7 @@ public class signupasroomowner extends AppCompatActivity {
         fAuth= FirebaseAuth.getInstance();
         loadingbar  = new ProgressDialog(this);
         fstore= FirebaseFirestore.getInstance();
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child("Room Owners");
 
 
 
@@ -121,28 +126,17 @@ loadingbar.setTitle("Room Owner Registration");
                 fAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            Toast.makeText(signupasroomowner.this, "User Created Successfully", Toast.LENGTH_SHORT).show();
-                            userID = fAuth.getCurrentUser().getUid();
-                            DocumentReference documentReference = fstore.collection("Room Owners").document(userID);
-                            Map<String,Object> Room_Owners= new HashMap<>();
-                            Room_Owners.put("Full Name",fullname);
-                            Room_Owners.put("Email",email);
-                            Room_Owners.put("Phone Number",phone);
-                            documentReference.set(Room_Owners).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void aVoid) {
-                                    Log.d("TAG","on success: user profile is created for "+userID);
-                                    loadingbar.dismiss();;
-                                }
-                            });
+                        if(task.isSuccessful()) {
 
-
-
-                            startActivity (new Intent(getApplicationContext(),Room_owner_firstpage.class));
+                            String customerId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                            Toast.makeText(signupasroomowner.this, customerId, Toast.LENGTH_SHORT).show();
+                            onlinecustomerID = fAuth.getCurrentUser().getUid();
+                           roomownerdbref = FirebaseDatabase.getInstance().getReference().child("Users").child("Room Owners").child(onlinecustomerID);
+                            roomownerdbref.setValue(true);
+                            validateandsaveonlyinfo();
+                            startActivity(new Intent(getApplicationContext(),Room_owner_firstpage.class));
                             finish();
                         }
-
                         else{
                             Toast.makeText(signupasroomowner.this, "Error!"+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             loadingbar.dismiss();;
@@ -155,26 +149,33 @@ loadingbar.setTitle("Room Owner Registration");
 
             }
         });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
+
+
+    private void validateandsaveonlyinfo() {
+int wallet= 0;
+
+        if (TextUtils.isEmpty(mFullName.getText().toString())) {
+            Toast.makeText(this, "Please provide your name", Toast.LENGTH_SHORT).show();
+        } else if (TextUtils.isEmpty(mPhone.getText().toString())) {
+            Toast.makeText(this, "Please provide your Phone Number", Toast.LENGTH_SHORT).show();
+        } else {
+            HashMap<String, Object> usermap = new HashMap<>();
+            usermap.put("uid", fAuth.getCurrentUser().getUid());
+            usermap.put("Name", mFullName.getText().toString());
+            usermap.put("Phone", mPhone.getText().toString());
+            usermap.put("Email", mEmail.getText().toString());
+            usermap.put("Password", mPassword.getText().toString());
+            usermap.put("Wallet", String.valueOf(wallet));
+
+            databaseReference.child(fAuth.getCurrentUser().getUid()).updateChildren(usermap);
+
+
+        }
+    }
+
+
+
+
+
 }
