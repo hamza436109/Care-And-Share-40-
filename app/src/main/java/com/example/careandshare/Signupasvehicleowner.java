@@ -26,6 +26,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Signupasvehicleowner extends AppCompatActivity {
     EditText mFullName,mEmail,mPassword,mPhone,confirmassword;
@@ -72,6 +74,11 @@ public class Signupasvehicleowner extends AppCompatActivity {
                 final String confirmpassword  = confirmassword.getText().toString().trim();
 
 
+
+                if (!isValid(phone)){
+                    mPhone.setError("Invalid Number");
+                      return;
+                }
                 if (TextUtils.isEmpty(email)){
                     mEmail.setError("Please enter your email address ");
                       return;
@@ -79,13 +86,13 @@ public class Signupasvehicleowner extends AppCompatActivity {
                 }
                 if (TextUtils.isEmpty(fullname)){
                     mFullName.setError("Please enter your Full Name ");
-                    return;
+                      return;
 
 
                 }
                 if (TextUtils.isEmpty(phone)){
                     mPhone.setError("Enter your phone number");
-                    return;
+                      return;
 
                 }
 
@@ -93,7 +100,7 @@ public class Signupasvehicleowner extends AppCompatActivity {
 
                 if (TextUtils.isEmpty(password)){
                     mPassword.setError("Enter your password");
-                    return;
+                      return;
 
                 }
 
@@ -101,12 +108,12 @@ public class Signupasvehicleowner extends AppCompatActivity {
 
                     mPassword.setError("Password must be more than six characters");
 
-                    return;
+                      return;
 
                 }
                 if (!confirmpassword.equals(password)){
                     confirmassword.setError("Passwords do not match");
-                    return;
+                      return;
 
                 }
 
@@ -171,6 +178,17 @@ public class Signupasvehicleowner extends AppCompatActivity {
         });
     }
 
+    public static boolean isValid(String s)
+    {
+
+
+
+        Pattern p = Pattern.compile("[0][3][0-4][0-9][0-9]{7}");
+
+
+        Matcher m = p.matcher(s);
+        return (m.find() && m.group().equals(s));
+    }
     private void validateandsaveonlyinfo() {
 
 int wallet=0;

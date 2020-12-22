@@ -12,6 +12,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import java.util.regex.*;
+import java.util.Scanner;
+
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -76,18 +79,26 @@ mLoginBtn.setOnClickListener(new View.OnClickListener() {
                 final String fullname = mFullName.getText().toString();
                 final String phone = mPhone.getText().toString().trim();
                 final  String confirmpassword = confirmassword.getText().toString().trim();
+
+
+
+                if (!isValid(phone)){
+                    mPhone.setError("Invalid Number");
+               return;}
                 if (TextUtils.isEmpty(email)){
                     mEmail.setError("Please enter your email address ");
-
+                        return;
 
                 }
                 if (TextUtils.isEmpty(name)){
                     mFullName.setError("Please enter your Full Name ");
+                    return;
 
 
                 }
                 if (TextUtils.isEmpty(phone)){
                     mPhone.setError("Enter your phone number");
+                    return;
 
                 }
 
@@ -95,6 +106,7 @@ mLoginBtn.setOnClickListener(new View.OnClickListener() {
 
                 if (TextUtils.isEmpty(password)){
                     mPassword.setError("Enter your password");
+                    return;
 
                 }
 
@@ -169,6 +181,17 @@ mLoginBtn.setOnClickListener(new View.OnClickListener() {
 
 
 
+    }
+    public static boolean isValid(String s)
+    {
+
+
+
+        Pattern p = Pattern.compile("[0][3][0-4][0-9][0-9]{7}");
+
+
+        Matcher m = p.matcher(s);
+        return (m.find() && m.group().equals(s));
     }
 
     private void validateandsaveonlyinfo() {

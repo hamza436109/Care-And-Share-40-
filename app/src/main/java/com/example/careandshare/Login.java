@@ -34,7 +34,9 @@ import java.util.List;
 
 import javax.security.auth.login.LoginException;
 
-public class Login extends AppCompatActivity {
+public class
+
+Login extends AppCompatActivity {
 
     EditText mEmail,mPassword;
     Button mLoginBtn;
@@ -62,8 +64,7 @@ public class Login extends AppCompatActivity {
        dbcustomer =FirebaseDatabase.getInstance().getReference().child("Users").child("Customers");
        dbdriver=FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers");
 
-                /*   roomowners();
-Driversusercheck();*/
+
 
 
 
@@ -289,7 +290,7 @@ Driversusercheck();*/
 
 
                         }
-                        for (int i=1;i<=cout;i++){
+                         for (int i=1;i<=cout;i++){
                             if (newArray[i].equals(mAuth.getCurrentUser().getUid())){
                                 //   Toast.makeText(Login.this,newArray[i], Toast.LENGTH_SHORT).show();
 

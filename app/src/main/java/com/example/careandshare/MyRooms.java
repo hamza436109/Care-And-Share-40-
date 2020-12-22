@@ -54,7 +54,7 @@ public class MyRooms extends AppCompatActivity {
       List<SlideModel> remoteimages2;
       List<SlideModel> remoteimages3;
       List<SlideModel> remoteimages4;
-      List<SlideModel> remoteimages5;
+       List<SlideModel> remoteimages5;
 
       CardView cardview1,cardview2,cardview3,cardview4,cardview5;
 
@@ -131,11 +131,10 @@ public class MyRooms extends AppCompatActivity {
         city[4]  = findViewById(R.id.cityonmyrooms4);
         city[5]  = findViewById(R.id.cityonmyrooms5);
 
-        cardview1 = findViewById(R.id.card_view1);
-        cardview2 = findViewById(R.id.card_view1);
+/*        cardview2 = findViewById(R.id.card_view1);
         cardview3 = findViewById(R.id.card_view1);
         cardview4 = findViewById(R.id.card_view1);
-        cardview5 = findViewById(R.id.card_view1);
+        cardview5 = findViewById(R.id.card_view1);*/
 
 
         getuserinformaition();

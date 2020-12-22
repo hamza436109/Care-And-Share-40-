@@ -3,15 +3,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent"
     tools:context=".Chat_Fragment">
 
     <TextView
-        android:id="@+id/textView4"
-        android:layout_width="277dp"
-        android:layout_height="64dp"
-        android:background="@color/colorAccent"
-        android:scrollbarSize="36dp"
-        android:text="Chats Fragment"
-        android:textSize="36dp" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No Upcoming Trips"
+        android:textSize="40sp"
+        android:layout_gravity="center_horizontal"
+         android:layout_marginTop="170dp"
+
+/>
+
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="250dp"
+        android:background="@drawable/round_bg"
+        android:text="BOOK YOUR NEXT TRIP/ROOM"
+        android:textColor="#FFFFFF"
+        />
 </FrameLayout>

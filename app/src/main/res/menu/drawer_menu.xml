@@ -12,6 +12,12 @@
             android:visible="true">
         </item>
 
+        <item android:id="@+id/my_rides"
+            android:icon="@drawable/ic_baseline_home_24"
+            android:title="My Rides"
+            android:visible="true">
+        </item>
+
         <item android:id="@+id/nav_wallet"
             android:icon="@drawable/ic_wallet"
             android:iconTint="@color/colorPrimary"

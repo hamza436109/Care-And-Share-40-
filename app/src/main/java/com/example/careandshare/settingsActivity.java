@@ -33,6 +33,8 @@ import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 
 import java.util.HashMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -129,16 +131,25 @@ getuserinformaition();
 
     private void validateandsaveonlyinfo() {
         if (TextUtils.isEmpty(name.getText().toString())){
-            Toast.makeText(this, "Please provide your name", Toast.LENGTH_SHORT).show();
+           name.setError("Please provide your name");
+            return;
         }
-        else
+        if (!isValid(phone.getText().toString())){
+            phone.setError("Invalid Number");
+            return;
+        }
         if (TextUtils.isEmpty(phone.getText().toString())){
+            phone.setError("Please provide your Phone Number");
             Toast.makeText(this, "Please provide your Phone Number", Toast.LENGTH_SHORT).show();
+            return;
         }
 
-        else
+
+
         if (gettype.equals("Drivers") && TextUtils.isEmpty(drivercar.getText().toString())){
-            Toast.makeText(this, "Please provide your Car name", Toast.LENGTH_SHORT).show();
+            drivercar.setError("Please provide your Car name");
+
+            return;
         }
 
         else {
@@ -173,9 +184,22 @@ getuserinformaition();
 
         }
     }
-     private void getuserinformaition(){
 
-databaseReference.child(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+
+    public static boolean isValid(String s)
+    {
+
+
+
+        Pattern p = Pattern.compile("[0][3][0-4][0-9][0-9]{7}");
+
+
+        Matcher m = p.matcher(s);
+        return (m.find() && m.group().equals(s));
+    }
+    private void getuserinformaition(){
+
+ databaseReference.child(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
     @Override
     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
         if (dataSnapshot.exists() && dataSnapshot.getChildrenCount()>0){
@@ -187,15 +211,15 @@ databaseReference.child(mAuth.getCurrentUser().getUid()).addValueEventListener(n
 
 
             if(gettype.equals("Drivers")) {
-   if (dataSnapshot.hasChild("Car")) {
-    String car = dataSnapshot.child("Car").getValue().toString();
-    drivercar.setText(car);
-} }
+              if (dataSnapshot.hasChild("Car")) {
+                        String car = dataSnapshot.child("Car").getValue().toString();
+                        drivercar.setText(car);
+              }
+            }
 
             if (dataSnapshot.hasChild("Image")){
                 String image = dataSnapshot.child("Image").getValue().toString();
-
-           Picasso.get().load(image).into(ProfileimageView);
+                Picasso.get().load(image).into(ProfileimageView);
 
             }
         }

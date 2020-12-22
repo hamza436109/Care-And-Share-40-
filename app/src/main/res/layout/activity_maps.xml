@@ -157,6 +157,7 @@
         android:layout_margin="10dp"
         android:elevation="5dp"
         android:background="@drawable/bg_round_search"
+        android:visibility="invisible"
         />
 
 
@@ -254,18 +255,19 @@
 
  <Button
         android:id="@+id/roombtn"
-        android:layout_width="143dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
         android:layout_marginBottom="76dp"
         android:background="@drawable/round_bg"
 
 
-        android:text="Settings"
+        android:text="Find Room"
         android:textColor="#ffffff"
-        android:visibility="invisible" />
+        android:visibility="visible" />
 
 
     <Button
@@ -329,6 +331,7 @@
         android:layout_gravity="start"
         app:headerLayout="@layout/header"
         app:menu="@menu/drawer_menu"
+
         >
     </com.google.android.material.navigation.NavigationView>
 

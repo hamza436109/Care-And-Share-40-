@@ -151,6 +151,7 @@
       android:ems="10"
       android:hint="Mobile Number"
       android:inputType="phone"
+      android:maxLength="11"
       android:padding="16dp"
       android:text="0334515446"
       android:textSize="14sp"

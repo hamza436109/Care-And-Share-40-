@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -62,7 +62,7 @@
 
 <TextView
     android:layout_width="wrap_content"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:text="My Rooms"
     android:textSize="45dp"
    android:layout_marginTop="55dp"
@@ -84,9 +84,8 @@
             android:layout_height="300dp"
           />
 
-
+<!--
         <androidx.cardview.widget.CardView
-            xmlns:card_view="http://schemas.android.com/apk/res-auto"
             android:id="@+id/card_view1"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
@@ -97,16 +96,18 @@
             app:cardCornerRadius="10dp"
 
             >
-
+-->
             <TextView
                 android:id="@+id/roomtypeonnmyrooms1"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
-
                 android:layout_marginTop="20dp"
                 android:text="Room Type"
-                android:textSize="20dp"
+
+
+                android:fontFamily="monospace"
+                android:textSize="15dp"
                 >
 
             </TextView>
@@ -114,11 +115,17 @@
             <TextView
                 android:id="@+id/cityonmyrooms1"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
-                android:layout_marginTop="45dp"
+
+                android:layout_marginTop="5dp"
                 android:text="City"
-                android:textSize="20dp"
+
+
+
+
+                android:fontFamily="monospace"
+                android:textSize="15dp"
                 >
 
             </TextView>
@@ -126,12 +133,15 @@
             <TextView
                 android:id="@+id/roomdesconmyrooms1"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
-                android:layout_marginTop="65dp"
+                android:layout_marginTop="5dp"
 
                 android:text="Room Description... "
-                android:textSize="20dp"
+
+
+                android:fontFamily="monospace"
+                android:textSize="15dp"
                 >
 
             </TextView>
@@ -140,12 +150,15 @@
             <TextView
                 android:id="@+id/priceonmyrooms1"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
-                android:layout_marginTop="85dp"
+
+
                 android:text="Price  "
-                android:textSize="20dp"
-                >
+
+                android:layout_marginTop="5dp"
+                android:fontFamily="monospace"
+                android:textSize="15dp">
 
 
             </TextView>
@@ -153,7 +166,7 @@
 
 
 
-        </androidx.cardview.widget.CardView>
+       <!-- </androidx.cardview.widget.CardView>-->
 
         <com.denzcoskun.imageslider.ImageSlider
             android:layout_marginTop="50dp"
@@ -163,15 +176,9 @@
             app:iss_corner_radius="30"
             android:layout_width="match_parent"
             android:layout_height="300dp"
+            android:visibility="invisible"
             />
-        <androidx.cardview.widget.CardView
-            xmlns:card_view="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/card_view2"
-            android:layout_gravity="center"
-            android:layout_margin="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            card_view:cardCornerRadius="4dp">
+
 
 
 
@@ -181,9 +188,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="30dp"
-                android:layout_marginTop="20dp"
+                android:visibility="invisible"
+
                 android:text="Room Type"
-                android:textSize="20dp">
+
+
+                android:layout_marginTop="20dp"
+                android:fontFamily="monospace"
+                android:textSize="15dp">
 
             </TextView>
 
@@ -192,9 +204,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="30dp"
-                android:layout_marginTop="45dp"
+                android:visibility="invisible"
                 android:text="City"
-                android:textSize="20dp">
+
+                android:layout_marginTop="5dp"
+                android:fontFamily="monospace"
+                android:textSize="15dp">
 
             </TextView>
 
@@ -204,9 +219,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="30dp"
-                android:layout_marginTop="65dp"
+                android:visibility="invisible"
                 android:text="Room Description... "
-                android:textSize="20dp">
+
+
+                android:layout_marginTop="5dp"
+                android:fontFamily="monospace"
+                android:textSize="15dp"
+                >
 
             </TextView>
 
@@ -216,9 +236,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="30dp"
-                android:layout_marginTop="85dp"
+                android:visibility="invisible"
                 android:text="Price  "
-                android:textSize="20dp">
+
+
+                android:layout_marginTop="5dp"
+                android:fontFamily="monospace"
+                android:textSize="15dp">
 
 
             </TextView>
@@ -228,7 +252,6 @@
 
 
 
-        </androidx.cardview.widget.CardView>
 
 
 
@@ -241,27 +264,26 @@
             android:layout_height="300dp"
             app:iss_corner_radius="30"
             android:layout_marginLeft="10dp"
+            android:visibility="invisible"
+            android:layout_marginTop="50dp"
             android:layout_marginRight="10dp"
             />
 
 
-        <androidx.cardview.widget.CardView
-            xmlns:card_view="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/card_view3"
-            android:layout_gravity="center"
-            android:layout_margin="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            card_view:cardCornerRadius="4dp">
+
 
             <TextView
                 android:id="@+id/roomtypeonnmyrooms3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="20dp"
+
                 android:layout_marginLeft="30dp"
-                android:textSize="20dp"
-                android:text="Room Type">
+
+                android:text="Room Type"
+                android:visibility="invisible"
+                android:layout_marginTop="5dp"
+                android:fontFamily="monospace"
+                android:textSize="15dp">
 
             </TextView>
             <TextView
@@ -269,9 +291,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="30dp"
-                android:layout_marginTop="45dp"
+                android:visibility="invisible"
                 android:text="City"
-                android:textSize="20dp">
+
+                android:layout_marginTop="5dp"
+                android:fontFamily="monospace"
+                android:textSize="15dp">
 
             </TextView>
 
@@ -281,10 +306,15 @@
                 android:id="@+id/roomdesconmyrooms3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="65dp"
+                android:visibility="invisible"
                 android:layout_marginLeft="30dp"
-                android:textSize="20dp"
-                android:text="Room Description... ">
+
+                android:text="Room Description... "
+
+                android:layout_marginTop="5dp"
+                android:fontFamily="monospace"
+                android:textSize="15dp"
+                >
 
             </TextView>
 
@@ -293,17 +323,22 @@
                 android:id="@+id/priceonmyrooms3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="85dp"
+
                 android:layout_marginLeft="30dp"
-                android:textSize="20dp"
-                android:text="Price  ">
+
+                android:text="Price  "
+                android:visibility="invisible"
+                android:layout_marginTop="5dp"
+                android:fontFamily="monospace"
+                android:textSize="15dp"
+                >
 
 
             </TextView>
 
 
 
-        </androidx.cardview.widget.CardView>
+
 
 
         <com.denzcoskun.imageslider.ImageSlider
@@ -311,18 +346,13 @@
             android:layout_width="match_parent"
             android:layout_height="300dp"
             app:iss_corner_radius="30"
+            android:layout_marginTop="50dp"
             android:layout_marginLeft="10dp"
+            android:visibility="invisible"
             android:layout_marginRight="10dp"
             />
 
-        <androidx.cardview.widget.CardView
-            xmlns:card_view="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/card_view4"
-            android:layout_gravity="center"
-            android:layout_margin="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            card_view:cardCornerRadius="4dp">
+
 
 
 
@@ -331,21 +361,29 @@
                 android:id="@+id/roomtypeonnmyrooms4"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="20dp"
+                android:visibility="invisible"
+
                 android:layout_marginLeft="30dp"
-                android:textSize="20dp"
-                android:text="Room Type">
+
+                android:text="Room Type"
+                android:layout_marginTop="5dp"
+                android:fontFamily="monospace"
+                android:textSize="15dp">
 
             </TextView>
 
             <TextView
                 android:id="@+id/cityonmyrooms4"
                 android:layout_width="match_parent"
+                android:visibility="invisible"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="30dp"
-                android:layout_marginTop="45dp"
+
                 android:text="City"
-                android:textSize="20dp">
+
+                android:layout_marginTop="5dp"
+                android:fontFamily="monospace"
+                android:textSize="15dp">
 
             </TextView>
 
@@ -354,10 +392,14 @@
                 android:id="@+id/roomdesconmyrooms4"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="65dp"
+                android:visibility="invisible"
                 android:layout_marginLeft="30dp"
-                android:textSize="20dp"
-                android:text="Room Description... ">
+
+                android:text="Room Description... "
+
+                android:layout_marginTop="5dp"
+                android:fontFamily="monospace"
+                android:textSize="15dp">
 
             </TextView>
 
@@ -366,16 +408,20 @@
                 android:id="@+id/priceonmyrooms4"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="85dp"
+                android:visibility="invisible"
+
                 android:layout_marginLeft="30dp"
-                android:textSize="20dp"
-                android:text="Price">
+                android:text="Price"
+
+                android:layout_marginTop="5dp"
+                android:fontFamily="monospace"
+                android:textSize="15dp">
 
 
             </TextView>
 
 
-        </androidx.cardview.widget.CardView>
+
 
 
 
@@ -386,29 +432,28 @@
             android:layout_width="match_parent"
             android:layout_height="300dp"
             app:iss_corner_radius="30"
+            android:layout_marginTop="50dp"
+            android:visibility="invisible"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             />
 
 
-        <androidx.cardview.widget.CardView
-            xmlns:card_view="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/card_view5"
-            android:layout_gravity="center"
-            android:layout_margin="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            card_view:cardCornerRadius="4dp">
+
 
 
             <TextView
                 android:id="@+id/roomtypeonnmyrooms5"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="20dp"
+
                 android:layout_marginLeft="30dp"
-                android:textSize="20dp"
-                android:text="Room Type">
+                android:text="Room Type"
+                android:visibility="invisible"
+
+                android:layout_marginTop="5dp"
+                android:fontFamily="monospace"
+                android:textSize="15dp">
 
             </TextView>
 
@@ -418,9 +463,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="30dp"
-                android:layout_marginTop="45dp"
+                android:visibility="invisible"
+
                 android:text="City"
-                android:textSize="20dp">
+
+                android:layout_marginTop="5dp"
+                android:fontFamily="monospace"
+                android:textSize="15dp"
+                >
 
 
                 <!--  for (DataSnapshot data : dataSnapshot.getChildren()) {
@@ -436,10 +486,15 @@
                 android:id="@+id/roomdesconmyroom5"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="65dp"
+
                 android:layout_marginLeft="30dp"
-                android:textSize="20dp"
-                android:text="Room Description... ">
+                android:visibility="invisible"
+
+                android:text="Room Description... "
+                android:layout_marginTop="5dp"
+                android:fontFamily="monospace"
+                android:textSize="15dp"
+                >
 
             </TextView>
 
@@ -448,10 +503,14 @@
                 android:id="@+id/priceonmyrooms5"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="85dp"
+
                 android:layout_marginLeft="30dp"
-                android:textSize="20dp"
-                android:text="Price  ">
+                android:visibility="invisible"
+
+                android:text="Price  "
+                android:layout_marginTop="5dp"
+                android:fontFamily="monospace"
+                android:textSize="15dp">
 
 
             </TextView>
@@ -459,11 +518,10 @@
 
 
 
-        </androidx.cardview.widget.CardView>
 
 
 
 
     </LinearLayout>
 
-</ScrollView>
+</RelativeLayout>

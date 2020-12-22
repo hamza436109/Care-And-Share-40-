@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Storerideinformation">
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_settings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_settings"
+            android:layout_height="45dp"
+            android:layout_width="wrap_content"
+            android:background="@color/colorPrimary">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/deleteroombtn"
+                    android:layout_width="30dp"
+                    android:layout_height="40dp"
+                    app:srcCompat="@drawable/ic_close_black_48dp"
+                    android:tint="@color/white">
+
+                </ImageView>
+
+
+
+                <ImageView
+                    android:id="@+id/savebtn"
+                    android:layout_width="40dp"
+                    android:layout_height="50dp"
+                    app:srcCompat="@drawable/ic_baseline_save_24"
+                    android:tint="@color/white"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="15dp">
+
+                </ImageView>
+
+            </RelativeLayout>
+
+
+        </androidx.appcompat.widget.Toolbar>
+
+
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <TextView
+        android:id="@+id/roominformation"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="65dp"
+        android:text="Ride Information"
+
+
+        android:textSize="30dp"
+        android:textStyle="bold"></TextView>
+
+
+    <!--<de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/ic_baseline_person_24"
+        app:civ_border_color="@color/transparentBlack"
+        app:civ_border_width="2dp"
+        android:layout_below="@+id/app_bar_settings"
+
+        android:layout_marginTop="60dp"
+        android:layout_centerHorizontal="true"
+
+        tools:ignore="VectorDrawableCompat" />-->
+
+
+    <TextView
+        android:id="@+id/change_picture_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/roominformation"
+        android:text="Add Car Pictures"
+        android:layout_centerHorizontal="true"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/colorPrimaryDark"
+        />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="75dp"
+        android:text="Origin"
+        android:layout_below="@id/change_picture_btn"
+        android:layout_marginLeft="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"
+
+
+
+        ></TextView>
+
+
+
+
+    <EditText
+        android:id="@+id/origin"
+        android:layout_width="270dp"
+        android:layout_height="60dp"
+        android:layout_below="@+id/change_picture_btn"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="95dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/custom_input"
+        android:textSize="14sp"
+        android:hint="Origin"
+        android:padding="2dp"
+        android:editable="false"
+        android:inputType="none"
+        />
+
+
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Destination"
+        android:layout_below="@id/origin"
+        android:layout_marginLeft="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"
+
+
+
+        ></TextView>
+
+
+
+
+    <EditText
+        android:id="@+id/destination"
+        android:layout_width="270dp"
+        android:layout_height="60dp"
+        android:background="@drawable/custom_input"
+        android:padding="2dp"
+        android:layout_below="@+id/origin"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="25dp"
+        android:textSize="14dp"
+        android:layout_marginEnd="20dp"
+        android:hint="Destination"
+        android:editable="false"
+        android:inputType="none"
+
+        />
+
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Fare"
+        android:layout_below="@id/destination"
+        android:layout_marginLeft="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"
+
+
+
+        ></TextView>
+
+
+
+    <EditText
+        android:id="@+id/fare"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@+id/destination"
+        android:padding="20dp"
+        android:layout_marginStart="20dp"
+        android:background="@drawable/custom_input"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="20dp"
+        android:hint="Fare"
+        android:inputType="number"
+
+        />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Seats Availability"
+        android:layout_below="@id/fare"
+        android:layout_marginLeft="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"
+
+
+
+        ></TextView>
+
+
+
+
+    <EditText
+        android:id="@+id/seatavailability"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/custom_input"
+        android:layout_below="@+id/fare"
+        android:layout_marginStart="20dp"
+        android:padding="20dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="20dp"
+        android:maxLength="1"
+        android:hint="Seats Avaiable"
+        android:inputType="number"
+
+        />
+
+
+    <Spinner
+        android:id="@+id/spinner1"
+        android:layout_width="152dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Numberofcustomers"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:visibility="invisible">
+
+    </Spinner>
+
+
+    <Button
+        android:id="@+id/savebtnend"
+        android:layout_width="155dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/seatavailability"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/round_bg"
+
+        android:text="SAVE"
+        android:textColor="@color/white"
+
+
+        >
+
+    </Button>
+
+
+
+
+
+
+    <Button
+        android:id="@+id/pickerorigin"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_below="@id/change_picture_btn"
+        android:layout_marginLeft="300dp"
+        android:layout_marginTop="95dp"
+        android:background="@drawable/ic_location"
+        android:pointerIcon="arrow"
+        android:textColor="@color/white"
+
+
+        ></Button>
+
+
+    <Button
+        android:id="@+id/pickerdestination"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_below="@id/origin"
+        android:layout_marginLeft="300dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/ic_location"
+        android:pointerIcon="arrow"
+        android:textColor="@color/white"
+
+
+        ></Button>
+
+    <Switch
+        android:id="@+id/switchride"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:shadowColor="@color/colorPrimary"
+        android:text="Available"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/roominformation"
+        android:layout_marginLeft="255dp"
+        />
+
+
+
+
+
+</RelativeLayout>

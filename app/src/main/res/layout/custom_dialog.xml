@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/success"
+
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/success"
+        />
+
+
+
+    <TextView
+        android:id="@+id/roombooked"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Room Booked"
+        android:layout_below="@id/success"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:textSize="45dp"
+        android:textColor="@android:color/black"
+        />
+
+    <TextView
+        android:id="@+id/test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="Congratulations! You have sucessfully recieved a booking"
+        android:layout_below="@id/roombooked"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:textSize="14dp"
+
+        android:gravity="center_horizontal" />
+
+    <View
+        android:id="@+id/testd"
+        android:layout_below="@id/test"
+        android:layout_width="match_parent"
+        android:layout_marginTop="15dp"
+        android:layout_centerHorizontal="true"
+        android:layout_height="0.0005dp"
+        android:background="@color/grey_font"
+
+        />
+
+    <View
+
+        android:layout_below="@id/testd"
+        android:layout_width="match_parent"
+        android:layout_marginTop="45dp"
+        android:layout_centerHorizontal="true"
+        android:layout_height="0.0005dp"
+        android:background="@color/grey_font"
+
+        />
+
+ <TextView
+     android:id="@+id/okay"
+     android:layout_below="@id/testd"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="12.5dp"
+     android:text="OKAY!!"
+     android:layout_centerHorizontal="true"
+     android:textStyle="bold"
+     android:textColor="@color/colorPrimary"/>
+
+
+
+
+
+
+</RelativeLayout>

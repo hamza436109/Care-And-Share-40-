@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".roomreceipt">
+
+    <RelativeLayout
+        android:id="@+id/rel"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:context=".roomreceipt"
+        tools:ignore="MissingConstraints">
+
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:fontFamily="@font/aclonica"
+            android:padding="10dp"
+            android:textColor="@color/white"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/date"
+            android:fontFamily="@font/aclonica"
+            android:padding="10dp"
+            android:textColor="@color/white"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/map"
+        android:layout_width="match_parent"
+        android:layout_height="190dp"
+        android:layout_below="@+id/rel"
+        tools:context=".roomreceipt"
+        tools:ignore="MissingConstraints">
+
+        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:map="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/map1"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="example.com.mapexample.MapsActivity" />
+
+    </RelativeLayout>
+
+
+
+    <TextView
+        android:id="@+id/cash"
+        android:layout_below="@+id/map"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CASH"
+        android:textSize="20dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginLeft="55dp"></TextView>
+
+    <TextView
+        android:id="@+id/pkr"
+        android:layout_below="@+id/map"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/cash"
+        android:text="PKR"
+        android:textSize="20dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginLeft="145dp"></TextView>
+
+
+    <TextView
+        android:id="@+id/bill"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/map"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="45dp"
+        android:layout_toRightOf="@+id/pkr"
+        android:fontFamily="@font/aclonica"
+        android:text="100"
+        android:textColor="#000000"
+
+        android:textSize="20dp"
+        android:textStyle="bold"></TextView>
+
+
+    <View
+        android:id="@+id/view1"
+        android:layout_below="@id/bill"
+        android:layout_width="match_parent"
+        android:layout_marginTop="40dp"
+        android:layout_centerHorizontal="true"
+        android:layout_height="0.0005dp"
+        android:background="@color/grey_font"
+
+        />
+    <ImageView
+        android:layout_below="@id/map"
+        android:layout_marginTop="45dp"
+        android:layout_width="40dp"
+        android:layout_height="28dp"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/ic_money"
+        />
+<TextView
+    android:id="@+id/uname"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/view1"
+    android:layout_marginTop="10dp"
+    android:text="Customer: "
+    android:textSize="14sp"
+    android:layout_marginLeft="55dp"></TextView>
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/view1"
+        android:layout_toRightOf="@id/uname"
+        android:layout_marginTop="10dp"
+        android:text="Hamza Arshad "
+        android:textColor="#000000"
+
+        android:textSize="14sp"
+        android:layout_marginLeft="5dp"></TextView>
+
+    <TextView
+        android:id="@+id/add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/name"
+
+        android:layout_marginTop="1dp"
+        android:text="I hope you enjoyed your stay"
+
+
+        android:textSize="10sp"
+        android:layout_marginLeft="55dp"></TextView>
+
+
+    <View
+        android:id="@+id/view4"
+        android:layout_below="@id/add"
+        android:layout_width="match_parent"
+        android:layout_marginTop="40dp"
+        android:layout_centerHorizontal="true"
+        android:layout_height="0.0005dp"
+        android:background="@color/grey_font"
+
+        />
+    <RatingBar
+        android:id="@+id/rating"
+        android:layout_width="wrap_content"
+        android:layout_below="@id/view1"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="80dp"
+        android:layout_centerHorizontal="true"
+
+        android:layout_marginLeft="20dp"
+        android:progressTint="@color/colorPrimary"
+        android:numStars="5"
+        android:stepSize="0.5"
+        />
+
+    <ImageView
+        android:layout_width="45dp"
+        android:layout_height="25dp"
+        android:layout_below="@id/view1"
+         app:srcCompat="@drawable/ic_baseline_person_24"
+
+        android:layout_marginTop="10dp"
+        />
+
+    <EditText
+        android:id="@+id/addcash"
+        android:layout_width="155dp"
+        android:layout_height="60dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/rating"
+
+
+        android:padding="20dp"
+        android:background="@drawable/custom_input"
+        android:layout_marginTop="5dp"
+
+        android:hint="Please Enter Amount"
+        android:inputType="number"
+
+        />
+
+
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="155dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/addcash"
+        android:layout_centerHorizontal="true"
+
+        android:layout_marginTop="45dp"
+        android:background="@drawable/round_bg"
+        android:text="Submit"
+        android:textColor="@color/white"
+
+
+        ></Button>
+
+
+
+    <Button
+        android:id="@+id/submcit"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_below="@id/rating"
+        android:layout_toLeftOf="@id/addcash"
+        android:layout_marginRight="0dp"
+
+
+        android:layout_marginTop="5dp"
+        android:background="@drawable/round_bg"
+        android:text="PKR"
+        android:textColor="@color/white"
+
+
+        ></Button>
+
+
+</RelativeLayout>

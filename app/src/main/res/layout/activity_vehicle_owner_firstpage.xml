@@ -95,7 +95,7 @@
 
             android:layout_marginBottom="16dp"
             android:background="@drawable/round_bg"
-            android:text="Find Ride"
+            android:text="Add Ride"
             android:textColor="#ffffff"
             android:visibility="visible" />
 
@@ -109,6 +109,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="76dp"
             android:background="@drawable/round_bg"
+            android:visibility="invisible"
 
 
             android:text="Rides"
@@ -128,7 +129,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="76dp"
             android:background="@drawable/round_bg"
-
+            android:visibility="invisible"
 
             android:text="Logout"
             android:textColor="#ffffff" />
@@ -233,7 +234,7 @@
 
 
     />
-    -->
+   -->
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigation_menu"
@@ -243,4 +244,7 @@
         app:headerLayout="@layout/header"
         app:menu="@menu/drawer_menu"
         >
-    </com.google.android.material.navigation.NavigationView></androidx.drawerlayout.widget.DrawerLayout>
+    </com.google.android.material.navigation.NavigationView>
+
+
+</androidx.drawerlayout.widget.DrawerLayout>

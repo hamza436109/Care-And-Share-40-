@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".bookroom"
+    android:id="@+id/bookrom">
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="86dp"
+        android:layout_marginLeft="86dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginEnd="237dp"
+        android:layout_marginRight="237dp"
+        android:layout_marginBottom="563dp"
+        android:text="Click this button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="invisible"/>
+
+
+ <com.denzcoskun.imageslider.ImageSlider
+     android:layout_marginTop="50dp"
+     android:layout_marginLeft="10dp"
+     android:layout_marginRight="10dp"
+     android:id="@+id/image_slider"
+     app:iss_corner_radius="30"
+     android:layout_width="match_parent"
+     android:layout_height="300dp"
+     />
+
+
+    <TextView
+        android:id="@+id/roomdesconbookroom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/image_slider"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="15dp"
+        android:text="Luxyury place for living you can come here and enjoyyyy "
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="bold"></TextView>
+
+
+
+
+    <TextView
+        android:id="@+id/TO"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/roomdesconbookroom"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        android:text="TO"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="bold"></TextView>
+
+
+
+
+
+
+    <TextView
+        android:id="@+id/destination"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/TO"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="30dp"
+        android:text="Destination "
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="bold"></TextView>
+
+
+
+    <View
+        android:id="@+id/view"
+        android:layout_below="@id/destination"
+        android:layout_width="300dp"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_height="0.0005dp"
+        android:background="@color/grey_font"
+
+        />
+
+
+
+    <TextView
+        android:id="@+id/userinfo"
+        android:layout_below="@+id/view"
+        android:layout_marginTop="30dp"
+        android:layout_width="165dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="35dp"
+        android:text="Private Room hosted by:"
+        android:textStyle="bold"></TextView>
+
+
+    <TextView
+        android:id="@+id/username"
+        android:layout_below="@+id/view"
+        android:layout_toRightOf="@id/userinfo"
+        android:layout_marginTop="30dp"
+        android:layout_width="165dp"
+        android:layout_height="wrap_content"
+        android:text="Username"
+        android:textStyle="bold"></TextView>
+
+
+    <TextView
+        android:id="@+id/availability"
+        android:layout_below="@id/userinfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="10"
+        android:layout_marginLeft="35dp"
+        />
+    <TextView
+        android:id="@+id/dot"
+        android:layout_marginTop="15dp"
+        android:layout_below="@id/userinfo"
+        android:layout_toRightOf="@id/availability"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="."
+        android:layout_marginLeft="1dp"
+        />
+
+
+    <TextView
+        android:id="@+id/guests"
+        android:layout_below="@id/userinfo"
+        android:layout_toRightOf="@id/dot"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_height="wrap_content"
+        android:text="Guests . 1 bedroom . 1 Private Bath"
+        android:layout_marginLeft="1dp"
+        />
+
+
+    <View
+        android:id="@+id/view1"
+        android:layout_below="@id/guests"
+        android:layout_width="300dp"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_height="0.0005dp"
+        android:background="@color/grey_font"
+
+        />
+    
+    
+    
+    <TextView
+        android:id="@+id/chkin"
+        android:layout_below="@id/view1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Self check-in"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="35dp"
+        android:textStyle="bold"
+        ></TextView>
+
+
+    <TextView
+        android:id="@+id/chktxt"
+        android:layout_below="@id/chkin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="You can check in with the door man."
+        android:layout_marginTop="3dp"
+        android:layout_marginLeft="35dp"
+        android:textSize="12sp"
+
+        ></TextView>
+
+
+    <TextView
+        android:id="@+id/cleantidy"
+        android:layout_below="@id/chktxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Clean and tidy "
+        android:layout_marginTop="30dp"
+        android:textStyle="bold"
+        android:layout_marginLeft="35dp"
+
+        ></TextView>
+
+
+    <TextView
+        android:id="@+id/cleantidytxt"
+        android:layout_below="@id/cleantidy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="7 Recent guests said that this place was sparkling clean"
+        android:layout_marginTop="3dp"
+        android:layout_marginLeft="35dp"
+        android:textSize="12sp"
+
+        ></TextView>
+
+
+    <TextView
+        android:id="@+id/cancellationpolicy"
+        android:layout_below="@id/cleantidytxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancellation Policy"
+        android:layout_marginTop="30dp"
+        android:textStyle="bold"
+        android:layout_marginLeft="35dp"
+
+        ></TextView>
+
+
+s    <TextView
+        android:id="@+id/cancellationtxt"
+        android:layout_below="@id/cancellationpolicy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="This reservation is non-refundable so make sure before bookings"
+        android:layout_marginTop="3dp"
+        android:layout_marginLeft="35dp"
+        android:textSize="12sp"
+
+
+        ></TextView>
+
+
+ <Button
+     android:id="@+id/reservebutton"
+     android:layout_width="165dp"
+     android:layout_height="wrap_content"
+     android:text="Book This Room"
+     android:layout_below="@id/cancellationtxt"
+     android:layout_marginTop="50dp"
+     android:textColor="@color/white"
+     android:background="@drawable/round_bg"
+     android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:id="@+id/cancelbooking"
+        android:layout_width="165dp"
+        android:layout_height="wrap_content"
+        android:text="Cancel Booking"
+        android:layout_below="@id/cancellationtxt"
+        android:layout_marginTop="50dp"
+        android:textColor="@color/white"
+        android:background="@drawable/round_bg"
+        android:layout_centerHorizontal="true"
+        android:visibility="invisible"
+        />
+
+
+
+
+
+
+
+
+
+
+
+
+
+</RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

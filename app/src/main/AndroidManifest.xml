@@ -20,7 +20,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Wallet"></activity>
+
+
+        <activity android:name=".mapdirectiontesting"></activity>
+        <activity android:name=".Availablerides" />
+        <activity android:name=".Storerideinformation" />
+        <activity android:name=".roominvoice" />
+        <activity android:name=".Scheduledroombooking" />
+        <activity android:name=".Bookedactivity" />
+        <activity android:name=".roomreceipt" />
+        <activity android:name=".bookroom" />
+        <activity android:name=".availablerooms" />
+        <activity android:name=".Wallet" />
         <activity android:name=".StoreRoomInformation" />
         <activity android:name=".MyRooms" />
         <activity android:name=".tabclasstesting" />

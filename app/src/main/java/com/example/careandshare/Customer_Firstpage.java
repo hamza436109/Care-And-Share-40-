@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
@@ -22,9 +23,14 @@ import com.firebase.geofire.GeoLocation;
 import com.firebase.geofire.GeoQuery;
 import com.firebase.geofire.GeoQueryEventListener;
 import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.Places;
+import com.google.android.gms.location.places.ui.PlacePicker;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -41,6 +47,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.auth.User;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.squareup.picasso.Picasso;
 
@@ -75,7 +82,7 @@ public class Customer_Firstpage extends FragmentActivity implements OnMapReadyCa
 
     private Button Logout;
     private Button SettingsButton;
-    private Button CallCabCarButton;
+    private Button CallCabCarButton,Searchroom;
     private FirebaseAuth mAuth;
     private FirebaseUser currentUser;
     private DatabaseReference CustomerDatabaseRef;
@@ -90,12 +97,12 @@ public class Customer_Firstpage extends FragmentActivity implements OnMapReadyCa
     private String customerID;
     Marker DriverMarker, PickUpMarker;
     GeoQuery geoQuery;
-    DatabaseReference Driverdbref;
+    DatabaseReference Userinfo;
 
     private ValueEventListener DriverLocationRefListner;
 
 
-    private TextView txtName, txtPhone, txtCarName;
+    private TextView txtName, txtPhone, txtCarName,headername;
     private CircleImageView profilePic;
     private RelativeLayout relativeLayout;
 
@@ -103,6 +110,9 @@ public class Customer_Firstpage extends FragmentActivity implements OnMapReadyCa
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle actionBarDrawerToggle;
     NavigationView navigationView;
+    TextView Username,phonenumber,email;
+    int AVAILABLE_ROOMS=0;
+    int AVAILABLE_RIDES=0;
 
 
 
@@ -111,6 +121,7 @@ public class Customer_Firstpage extends FragmentActivity implements OnMapReadyCa
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
 
@@ -141,14 +152,24 @@ public class Customer_Firstpage extends FragmentActivity implements OnMapReadyCa
         setUpToolbar();
         navigationView = (NavigationView) findViewById(R.id.navigation_menu);
 
+
+        Menu menu =navigationView.getMenu();
+        MenuItem target = menu.findItem(R.id.nav_Policy);
+        MenuItem myrooms = menu.findItem(R.id.nav_myrooms);
+        MenuItem myrides = menu.findItem(R.id.my_rides);
+        myrooms.setVisible(false);
+        myrides.setVisible(false);
+        target.setTitle("Feedback");
+
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId())
                 {
-                    case  R.id.nav_profile:
+                    case  R.id.nav_Policy:
 
-                        Intent intent = new Intent(Customer_Firstpage.this, MainActivity.class);
+                        Intent intent = new Intent(Customer_Firstpage.this, roominvoice.class);
+                        intent.putExtra("type","Customer");
                         startActivity(intent);
                         break;
 
@@ -202,13 +223,26 @@ public class Customer_Firstpage extends FragmentActivity implements OnMapReadyCa
         CustomerDatabaseRef = FirebaseDatabase.getInstance().getReference().child("Customer Requests");
         DriverAvailableRef = FirebaseDatabase.getInstance().getReference().child("Drivers Available");
         DriverLocationRef = FirebaseDatabase.getInstance().getReference().child("Drivers Working");
-        SettingsButton=findViewById(R.id.roombtn);
+        Searchroom=findViewById(R.id.roombtn);
         CallCabCarButton =  (Button) findViewById(R.id.findridebtn);
         txtName = findViewById(R.id.name_driver);
         txtPhone = findViewById(R.id.phone_driver);
         txtCarName = findViewById(R.id.car_name_driver);
         profilePic = findViewById(R.id.profile_image_driver);
         relativeLayout = findViewById(R.id.rell);
+        Userinfo = FirebaseDatabase.getInstance().getReference().child("Users").child("Customers");
+
+
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_menu);
+        View headerView = navigationView.getHeaderView(0);
+        Username = (TextView) headerView.findViewById(R.id.headernameasas);
+        phonenumber= (TextView) headerView.findViewById(R.id.headerphone);
+        email= (TextView) headerView.findViewById(R.id.headeremail);
+        Username.setText("Hello hello testing");
+
+
+
 
 
 
@@ -217,20 +251,75 @@ public class Customer_Firstpage extends FragmentActivity implements OnMapReadyCa
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        SettingsButton.setOnClickListener(new View.OnClickListener() {
+      /*  SettingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent gotosettings = new Intent(Customer_Firstpage.this,settingsActivity.class);
                 gotosettings.putExtra("type","Customers");
                 startActivity(gotosettings);
             }
-        });
+        });*/
+
+Searchroom.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+
+        PlacePicker.IntentBuilder builder =  new PlacePicker.IntentBuilder();
+        try {
+            AVAILABLE_ROOMS=1;
+            int PLACE_PICKER_REQUEST=AVAILABLE_ROOMS;;
+            startActivityForResult(builder.build(Customer_Firstpage.this),
+                    PLACE_PICKER_REQUEST);
 
 
+        } catch (GooglePlayServicesRepairableException e) {
+            e.printStackTrace();
+        } catch (GooglePlayServicesNotAvailableException e) {
+            e.printStackTrace();
+        }
+
+
+        //
+    }
+});
 
 
 
         CallCabCarButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+
+                PlacePicker.IntentBuilder builder =  new PlacePicker.IntentBuilder();
+                try {
+                    AVAILABLE_RIDES=1;
+                    int PLACE_PICKER_REQUEST=AVAILABLE_RIDES;;
+                    startActivityForResult(builder.build(Customer_Firstpage.this),
+                            PLACE_PICKER_REQUEST);
+
+
+                } catch (GooglePlayServicesRepairableException e) {
+                    e.printStackTrace();
+                } catch (GooglePlayServicesNotAvailableException e) {
+                    e.printStackTrace();
+                }
+
+
+
+
+
+
+
+
+
+               // startActivity(new Intent(Customer_Firstpage.this,Availablerides.class));
+            }
+        });
+
+
+
+                /*.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
@@ -253,6 +342,8 @@ public class Customer_Firstpage extends FragmentActivity implements OnMapReadyCa
 
                         driverFoundID = null;
                     }
+
+
 
                     driverFound = false;
                     radius = 1;
@@ -293,6 +384,7 @@ public class Customer_Firstpage extends FragmentActivity implements OnMapReadyCa
                 }
             }
         });
+        setinfo();*/
     }
 
     private void setUpToolbar() {
@@ -363,6 +455,56 @@ public class Customer_Firstpage extends FragmentActivity implements OnMapReadyCa
             }
         });
     }
+
+
+
+
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+            if(requestCode==AVAILABLE_ROOMS) {
+                AVAILABLE_ROOMS=0;
+
+            if (resultCode == RESULT_OK) {
+
+                Place place = PlacePicker.getPlace(data, this);
+               // address =getcompleteaddress(place.getLatLng().latitude,place.getLatLng().longitude);
+                Toast.makeText(this, "To available Rooms", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(Customer_Firstpage.this,availablerooms.class));
+
+
+
+            }}
+            else
+        if(requestCode==AVAILABLE_RIDES) {
+            AVAILABLE_RIDES=0;
+
+            if (resultCode == RESULT_OK) {
+
+                Place place = PlacePicker.getPlace(data, this);
+                // address =getcompleteaddress(place.getLatLng().latitude,place.getLatLng().longitude);
+                Toast.makeText(this, "To available Rides", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(Customer_Firstpage.this,Availablerides.class));
+
+
+
+            }}
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -541,6 +683,8 @@ public class Customer_Firstpage extends FragmentActivity implements OnMapReadyCa
                 {
                     if (dataSnapshot.child("Name").exists()) {
                         String name = dataSnapshot.child("Name").getValue().toString();
+
+
                         txtName.setText(name);
                     }
                     if (dataSnapshot.child("Phone").exists()) {
@@ -572,6 +716,46 @@ public class Customer_Firstpage extends FragmentActivity implements OnMapReadyCa
             }
         });
     }
+
+
+    private void setinfo(){
+
+        Toast.makeText(this, mAuth.getUid(), Toast.LENGTH_SHORT).show();
+
+       Userinfo.child(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists() && dataSnapshot.getChildrenCount()>0){
+
+                    String name1 = dataSnapshot.child("Name").getValue().toString();
+                    String phone1 = dataSnapshot.child("Phone").getValue().toString();
+                    String emaill=dataSnapshot.child("Email").getValue().toString();
+                    Username.setText(name1);
+                    email.setText(emaill);
+                    phonenumber.setText(phone1);
+
+
+
+
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });;
+
+
+
+
+
+    }
+
+
+
+
 
 }
 

@@ -57,7 +57,7 @@
         android:ems="10"
         android:fontFamily="@font/aclonica"
         android:hint="Email"
-        android:text="anus@gmail.com"
+        android:text="driver@gmail.com"
         android:inputType="text|textEmailAddress"
         android:padding="16dp"
         android:textColor="#8C1313"
@@ -85,10 +85,10 @@
         android:fontFamily="@font/aclonica"
         android:hint="Password"
         android:inputType="textPassword"
-        android:text="shahg4u12"
+        android:text="123456"
         android:padding="16dp"
         android:textColor="#8C1313"
-        android:textColorHint="#636161"
+         android:textColorHint="#636161"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -129,7 +129,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/createText"
-        app:srcCompat="@drawable/ic_facebook" />
+        app:srcCompat="@drawable/ic_facebook"
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/imageView4"
@@ -142,7 +143,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/createText"
-        app:srcCompat="@drawable/common_google_signin_btn_icon_dark" />
+        app:srcCompat="@drawable/common_google_signin_btn_icon_dark"
+        android:visibility="invisible"/>
 
     <TextView
         android:id="@+id/createText"

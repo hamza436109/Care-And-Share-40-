@@ -9,6 +9,8 @@ import androidx.core.app.ActivityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Intent;
@@ -16,7 +18,12 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -33,6 +40,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.messaging.FirebaseMessaging;
 
@@ -45,14 +57,22 @@ public class Room_owner_firstpage extends AppCompatActivity implements OnMapRead
     Marker mCurrLocationMarker;
     LocationRequest mlocationRequest;
 
-
+    DatabaseReference Userinfo;
+    DatabaseReference dbref;
 
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle actionBarDrawerToggle;
     NavigationView navigationView;
+    TextView Username,phonenumber,email;
+    FirebaseAuth mAuth;
+    TextView okay;
+    Button addroombtn;;
+    Dialog dialog;
 
 
 
+
+    @SuppressLint("ResourceType")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,7 +97,7 @@ public class Room_owner_firstpage extends AppCompatActivity implements OnMapRead
                         if (!task.isSuccessful()){
                             msg = "failed";
                         }
-                        Toast.makeText(Room_owner_firstpage.this, msg, Toast.LENGTH_SHORT).show();
+                      //  Toast.makeText(Room_owner_firstpage.this, msg, Toast.LENGTH_SHORT).show();
                     }
 
 
@@ -90,14 +110,21 @@ public class Room_owner_firstpage extends AppCompatActivity implements OnMapRead
 
         setUpToolbar();
         navigationView = (NavigationView) findViewById(R.id.navigation_menu);
+
+        Menu menu =navigationView.getMenu();
+        MenuItem target = menu.findItem(R.id.nav_Policy);
+        MenuItem myrides = menu.findItem(R.id.my_rides);
+        myrides.setVisible(false);
+        target.setTitle("Feedback");
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId())
                 {
-                    case  R.id.nav_profile:
+                    case  R.id.nav_Policy:
 
-                        Intent intent = new Intent(Room_owner_firstpage.this, MainActivity.class);
+                        Intent intent = new Intent(Room_owner_firstpage.this, roominvoice.class);
+                        intent.putExtra("type","Room Owners");
                         startActivity(intent);
                         break;
 
@@ -111,14 +138,38 @@ public class Room_owner_firstpage extends AppCompatActivity implements OnMapRead
 
                     case  R.id.nav_myrooms:
 
-                        Intent gotomyrooms = new Intent(Room_owner_firstpage.this,MyRooms.class);
-                        gotomyrooms.putExtra("type","Room Owners");
-                        startActivity(gotomyrooms);
+
+                        FirebaseDatabase.getInstance().getReference().child("Available Rooms").child(mAuth.getCurrentUser().getUid())
+                                .child("Booked By").addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                if (dataSnapshot.getChildrenCount()>0){
+                                    Toast.makeText(Room_owner_firstpage.this, "You cannot edit now. Room is already booked!!", Toast.LENGTH_SHORT).show();
+                                }
+                                  else {
+                                    Intent gotomyrooms = new Intent(Room_owner_firstpage.this, MyRooms.class);
+                                    gotomyrooms.putExtra("type", "Room Owners");
+                                    startActivity(gotomyrooms);
+                                }
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
+
+
+
+
+
                         break;
+
 
                     case  R.id.nav_mybookings:
 
-                        Intent gotomybookings = new Intent(Room_owner_firstpage.this,tabclasstesting.class);
+                        Intent gotomybookings = new Intent(Room_owner_firstpage.this,Scheduledroombooking.class);
                         gotomybookings.putExtra("type","Room Owners");
                         startActivity(gotomybookings);
                         break;
@@ -152,10 +203,63 @@ public class Room_owner_firstpage extends AppCompatActivity implements OnMapRead
                 return false;
             }
         });
+        mAuth = FirebaseAuth.getInstance();
+
+
+        Userinfo = FirebaseDatabase.getInstance().getReference().child("Users").child("Room Owners");
+        NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_menu);
+        View headerView = navigationView.getHeaderView(0);
+        Username = (TextView) headerView.findViewById(R.id.headernameasas);
+        phonenumber= (TextView) headerView.findViewById(R.id.headerphone);
+        email= (TextView) headerView.findViewById(R.id.headeremail);
+        addroombtn=findViewById(R.id.Addroom);
+
+        Username.setText("Hello hello testing");
+        dbref=FirebaseDatabase.getInstance().getReference().child("Available Rooms");
+
+
+        dialog=new Dialog(Room_owner_firstpage.this);
+        dialog.setContentView(R.layout.custom_dialog);
+        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP)
+
+            dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+            dialog.setCancelable(false);
+            okay=dialog.findViewById(R.id.okay);
 
 
 
+            okay.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    dialog.dismiss();
+                }
+            });
 
+            addroombtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    FirebaseDatabase.getInstance().getReference().child("Available Rooms").child(mAuth.getCurrentUser().getUid())
+                            .child("Booked By").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            if (dataSnapshot.getChildrenCount()>0){
+                                Toast.makeText(Room_owner_firstpage.this, "You cannot edit now. Room is already booked!!", Toast.LENGTH_SHORT).show();
+                            }
+                            else {
+                                Intent gotomyrooms = new Intent(Room_owner_firstpage.this, MyRooms.class);
+                                gotomyrooms.putExtra("type", "Room Owners");
+                                startActivity(gotomyrooms);
+                            }
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+                }
+            });
 
 
 
@@ -173,40 +277,84 @@ public class Room_owner_firstpage extends AppCompatActivity implements OnMapRead
         }
 
 
-
-
-
-/*
-        Ridebtn = findViewById(R.id.ridebtn);
-        Roombtn = findViewById(R.id.roombtn);
-        searchroombar = findViewById(R.id.searchBar);
-        searchridebar = findViewById(R.id.searchrideBar);
-        findRoombtn = findViewById(R.id.findroombtn);
-        findRidebtn = findViewById(R.id.findridebtn);
-
-
-        Ridebtn.setOnClickListener(new View.OnClickListener() {
+       /* okay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                searchroombar.setVisibility(view.GONE);
-                searchridebar.setVisibility(view.VISIBLE);
-                findRoombtn.setVisibility(view.GONE);
-                findRidebtn.setVisibility(view.VISIBLE);
+                dialog.dismiss();
+            }
+        });*/
+
+
+
+
+        Roombookedbycustomer();
+        setinfo();
+
+
+
+    }
+
+    private void Roombookedbycustomer() {
+
+
+
+        dbref.child(mAuth.getCurrentUser().getUid()).child("Booked By").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()){
+
+
+                    dialog.show();
+                    Toast.makeText(Room_owner_firstpage.this, "ROOM BOOKED", Toast.LENGTH_SHORT).show();
+                }
+                else
+                    Toast.makeText(Room_owner_firstpage.this, "ROOM CANCELLED" , Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
 
+    }
 
-        Roombtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                searchridebar.setVisibility(view.GONE);
-                searchroombar.setVisibility(view.VISIBLE);
-                findRidebtn.setVisibility(view.GONE);
-                findRoombtn.setVisibility(view.VISIBLE);
+    private void setinfo() {
+        {
 
-            }
-        });*/
+
+
+           Userinfo.child(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists() && dataSnapshot.getChildrenCount()>0){
+
+                        String name1 = dataSnapshot.child("Name").getValue().toString();
+                        String phone1 = dataSnapshot.child("Phone").getValue().toString();
+                        String emaill=dataSnapshot.child("Email").getValue().toString();
+                        Username.setText(name1);
+                        email.setText(emaill);
+                        phonenumber.setText(phone1);
+
+
+
+
+
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });;
+
+
+
+
+
+        }
+
 
 
     }
@@ -299,12 +447,12 @@ public class Room_owner_firstpage extends AppCompatActivity implements OnMapRead
 
     @Override
     public void onConnectionSuspended(int i) {
-        Toast.makeText(getApplicationContext(), "hello", Toast.LENGTH_LONG).show();
+
     }
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-        Toast.makeText(getApplicationContext(), "hello", Toast.LENGTH_LONG).show();
+
     }
 
     @Override
@@ -326,6 +474,8 @@ public class Room_owner_firstpage extends AppCompatActivity implements OnMapRead
         geoFire.removeLocation(userID);
 */
     }
+
+
 
 
     }

@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
-                    android:id="@+id/closebtn"
+                    android:id="@+id/deleteroombtn"
                     android:layout_width="30dp"
                     android:layout_height="40dp"
                     app:srcCompat="@drawable/ic_close_black_48dp"
@@ -57,6 +57,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <TextView
+        android:id="@+id/roominformation"
         android:layout_width="wrap_content"
         android:layout_height="35dp"
         android:layout_centerHorizontal="true"
@@ -79,6 +80,7 @@
 
         android:layout_marginTop="60dp"
         android:layout_centerHorizontal="true"
+        android:visibility="invisible"
 
         tools:ignore="VectorDrawableCompat" />
 
@@ -87,7 +89,7 @@
         android:id="@+id/change_picture_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/profile_image"
+        android:layout_below="@+id/roominformation"
         android:text="Add Pictures"
         android:layout_centerHorizontal="true"
         android:textSize="16dp"
@@ -97,19 +99,37 @@
         />
 
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Room Type"
+        android:layout_below="@id/change_picture_btn"
+        android:layout_marginLeft="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"
+
+
+
+        ></TextView>
+
+
+
 
 
     <EditText
         android:id="@+id/roomtype"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_below="@+id/change_picture_btn"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="15dp"
+        android:padding="20dp"
+        android:background="@drawable/custom_input"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="20dp"
         android:hint="Room Type"
         android:inputType="text"
-        android:textColor="@color/transparentBlack"
+
         />
 
 
@@ -118,39 +138,79 @@
     <EditText
         android:id="@+id/city"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
+        android:background="@drawable/custom_input"
         android:layout_below="@+id/roomtype"
         android:layout_marginStart="20dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="20dp"
+        android:padding="20dp"
         android:hint="City"
+        android:text="Islamabad"
         android:inputType="text"
         android:textColorHint="@color/colorPrimaryDark"
+        android:visibility="invisible"
+
         />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Room Description"
+        android:layout_below="@id/roomtype"
+        android:layout_marginLeft="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"
+
+
+
+        ></TextView>
+
 
 
     <EditText
         android:id="@+id/Room_Description"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/city"
+        android:layout_height="60dp"
+        android:background="@drawable/custom_input"
+        android:padding="20dp"
+        android:layout_below="@+id/roomtype"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="20dp"
         android:hint="Provide Description"
         android:inputType="text"
 
    />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Price"
+        android:layout_below="@id/Room_Description"
+        android:layout_marginLeft="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"
+
+
+
+        ></TextView>
+
+
 
 
     <EditText
         android:id="@+id/price"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_below="@+id/Room_Description"
+        android:padding="20dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="15dp"
+        android:background="@drawable/custom_input"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="20dp"
         android:hint="Price"
         android:inputType="number"
@@ -158,21 +218,128 @@
         />
 
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Bed Spaces"
+        android:layout_below="@id/price"
+        android:layout_marginLeft="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"
+
+
+
+        ></TextView>
+
+
+
+    <EditText
+        android:id="@+id/Numberofcustomers"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/custom_input"
+        android:layout_below="@+id/price"
+        android:layout_marginStart="20dp"
+        android:padding="20dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="20dp"
+        android:maxLength="1"
+        android:hint="Bed Space"
+        android:inputType="number"
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Addresss"
+        android:layout_below="@id/Numberofcustomers"
+        android:layout_marginLeft="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"
+
+
+
+        ></TextView>
+
+    <EditText
+        android:id="@+id/location_Address"
+        android:layout_width="270dp"
+        android:layout_height="60dp"
+        android:background="@drawable/custom_input"
+        android:layout_below="@+id/Numberofcustomers"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="25dp"
+        android:padding="2dp"
+        android:layout_marginEnd="20dp"
+        android:hint="Address"
+        android:editable="false"
+        android:inputType="none"
+
+        />
+
+    <Spinner
+        android:id="@+id/spinner1"
+        android:layout_width="152dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Numberofcustomers"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:visibility="invisible">
+
+    </Spinner>
+
+
 
     <Button
         android:id="@+id/btnend"
         android:layout_width="155dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/price"
+        android:layout_below="@id/location_Address"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/round_bg"
+        android:onClick="uploadfiles"
         android:text="SAVE"
         android:textColor="@color/white"
-        android:onClick="uploadfiles"
 
 
         ></Button>
+
+
+
+
+
+
+    <Button
+        android:id="@+id/picker"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_below="@id/Numberofcustomers"
+        android:layout_marginLeft="295dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/ic_location"
+        android:pointerIcon="arrow"
+        android:textColor="@color/white"
+
+
+        ></Button>
+
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:shadowColor="@color/colorPrimary"
+        android:text="Available"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/roominformation"
+        android:layout_marginLeft="255dp"
+        />
+
+
 
 
 </RelativeLayout>

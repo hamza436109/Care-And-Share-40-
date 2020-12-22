@@ -26,6 +26,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class signupasroomowner extends AppCompatActivity {
     EditText mFullName,mEmail,mPassword,mPhone,confirmassword;
@@ -84,18 +86,24 @@ public class signupasroomowner extends AppCompatActivity {
                 final String confirmpassword  = confirmassword.getText().toString().trim();
 
 
+                if (!isValid(phone)){
+                    mPhone.setError("Invalid Number");
+                    return;
+                }
+
                 if (TextUtils.isEmpty(email)){
                     mEmail.setError("Please enter your email address ");
 
-
+                    return;
                 }
                 if (TextUtils.isEmpty(fullname)){
                     mFullName.setError("Please enter your Full Name ");
-
+                        return;
 
                 }
                 if (TextUtils.isEmpty(phone)){
                     mPhone.setError("Enter your phone number");
+                    return;
 
                 }
 
@@ -103,6 +111,7 @@ public class signupasroomowner extends AppCompatActivity {
 
                 if (TextUtils.isEmpty(password)){
                     mPassword.setError("Enter your password");
+                    return;
 
                 }
 
@@ -132,7 +141,7 @@ loadingbar.setTitle("Room Owner Registration");
                             Toast.makeText(signupasroomowner.this, customerId, Toast.LENGTH_SHORT).show();
                             onlinecustomerID = fAuth.getCurrentUser().getUid();
                            roomownerdbref = FirebaseDatabase.getInstance().getReference().child("Users").child("Room Owners").child(onlinecustomerID);
-                            roomownerdbref.setValue(true);
+                           roomownerdbref.setValue(true);
                             validateandsaveonlyinfo();
                             startActivity(new Intent(getApplicationContext(),Room_owner_firstpage.class));
                             finish();
@@ -150,7 +159,17 @@ loadingbar.setTitle("Room Owner Registration");
             }
         });
     }
+    public static boolean isValid(String s)
+    {
 
+
+
+        Pattern p = Pattern.compile("[0][3][0-4][0-9][0-9]{7}");
+
+
+        Matcher m = p.matcher(s);
+        return (m.find() && m.group().equals(s));
+    }
 
     private void validateandsaveonlyinfo() {
 int wallet= 0;

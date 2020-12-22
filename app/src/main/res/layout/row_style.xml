@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/relativelayout"
+    android:layout_margin="5dp"
+    android:padding="3dp"
+    android:background="@color/white"
+    android:outlineAmbientShadowColor="@color/grey_font"
+    android:layout_marginBottom="5dp"
+   >
+
+
+
+
+
+    <TextView
+        android:id="@+id/roomtypetxt"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="13dp"
+        android:text="Room Type"
+
+
+        android:textSize="12dp" />
+    <TextView
+        android:id="@+id/roomtype"
+        android:layout_below="@id/roomtypetxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:text="Room Type"
+
+
+        android:textSize="12dp" />
+
+
+
+    <TextView
+        android:id="@+id/availablity1txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/roomtype"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:textSize="12dp"
+
+        android:text="Aavailability"/>
+
+    <TextView
+        android:id="@+id/availablity1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/availablity1txt"
+
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:textSize="12dp"
+
+        android:text="Aavailability"/>
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/availablity1txt"
+
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/availablity1"
+        android:layout_marginLeft="2dp"
+        android:textSize="12dp"
+        android:text="Bed Spaces Available "
+        android:textStyle="bold"/>
+
+
+    <TextView
+        android:id="@+id/roomdescriptiontxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/availablity1"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:textSize="12dp"
+
+
+        android:text="Room Description"/>
+
+
+    <TextView
+        android:id="@+id/roomdescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/roomdescriptiontxt"
+
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:textSize="12dp"
+
+
+        android:text="Room Description"/>
+
+
+    <TextView
+        android:id="@+id/pricetxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        android:layout_below="@+id/roomdescription"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:text="Price"
+        android:textSize="12dp" />
+
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+         android:layout_below="@+id/pricetxt"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:text="price"
+
+
+        android:textSize="12dp" />
+
+
+    <TextView
+
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/pricetxt"
+    android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/price"
+
+    android:layout_marginLeft="0dp"
+    android:textSize="12dp"
+
+    android:text="/Night"
+    android:textStyle="bold"/>
+
+    <TextView
+         android:id="@+id/ad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/price"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/colorPrimary"
+
+
+        android:layout_marginLeft="10dp"
+        android:textSize="12dp"
+
+        android:text="ADDRESS:"
+        android:textStyle="bold"/>
+
+
+
+
+
+
+
+
+
+
+    <!-- <TextView
+         android:id="@+id/city1"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_below="@+id/email"
+         android:layout_marginTop="60dp"
+         android:layout_marginLeft="10dp"
+         android:textSize="12dp"
+
+
+         android:text="City"/>-->
+
+
+
+
+
+
+
+        <!--  <TextView
+              android:id="@+id/uid"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_below="@+id/email"
+              android:layout_marginTop="140dp"
+              android:layout_marginLeft="10dp"
+              android:textSize="12dp"
+
+
+              android:text="UID"/>-->
+
+
+
+
+        <TextView
+            android:id="@+id/address1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@+id/ad"
+            android:layout_marginTop="5dp"
+            android:text="Address"
+            android:textSize="14dp"
+            />
+
+
+      
+
+
+
+
+
+
+
+
+
+</RelativeLayout>

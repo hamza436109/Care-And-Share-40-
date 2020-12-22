@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "82011399847-c7sb67hqa39ia8v2cnq0mci80tujve0m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.careandshare",
+            "certificate_hash": "b587adc625f90b58eae99bc3f16d12931428f23e"
+          }
+        },
+        {
           "client_id": "82011399847-1ci3egjfl6pfd909ltrbgv6gus91donr.apps.googleusercontent.com",
           "client_type": 3
         }
